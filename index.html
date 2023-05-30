@@ -5,13 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>chat</title>
+    <!-- <link rel="stylesheet" href="mini_1.css"> -->
+    <style>
+        #questioninput {
+            overflow: auto;
+            width: 300px;
+            height: 100px;
+        }
+        #questionBtn{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
   </head>
   <body>
     <div>
-      <ul></ul>
-      <form action="post">
-        <input type="text" autofocus />
-        <button type="submit">전송</button>
+        <section id="answerArea">
+            <ul></ul>
+        </section>
+      <form action="post" id="questionArea">
+        <input type="textarea" id="questioninput" autofocus />
+        <button type="submit" id="questionBtn">전송</button>
       </form>
     </div>
     <script>
@@ -19,6 +33,7 @@
         const $input = document.querySelector("input");
         const $chatList = document.querySelector("ul");
 
+        const inputtmp = document.querySelector("input")
         // openAI API
         let url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`;
 
