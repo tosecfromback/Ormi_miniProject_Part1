@@ -21,11 +21,44 @@
   <body>
     <div>
         <section id="answerArea">
+            <select name="" id="">지역
+                <option value="">서울</option>
+                <option value="">인천</option>
+                <option value="">대전</option>
+                <option value="">광주</option>
+                <option value="">부산</option>
+            </select>
+            <span>지역에 있는 도서관에</span>
+            <span>출판년도가</span>
+            <select name="" id="">
+                <option value="">2015</option>
+                <option value="">2016</option>
+                <option value="">2017</option>
+                <option value="">2018</option>
+                <option value="">2019</option>
+                <option value="">2020</option>
+                <option value="">2021</option>
+                <option value="">2022</option>
+                <option value="">2023</option>
+            </select>
+            <span>부터</span>
+            <select name="" id="">
+                <option value="">2015</option>
+                <option value="">2016</option>
+                <option value="">2017</option>
+                <option value="">2018</option>
+                <option value="">2019</option>
+                <option value="">2020</option>
+                <option value="">2021</option>
+                <option value="">2022</option>
+                <option value="">2023</option>
+            </select>
+            <span>사이에 출간된</span>
             <ul></ul>
         </section>
       <form action="post" id="questionArea">
-        <input type="textarea" id="questioninput" autofocus />
-        <button type="submit" id="questionBtn">질문</button>
+        <input type="textarea" id="questioninput" placeholder="입력받는 서명, 저자, 관련어" autofocus />
+        <button type="submit" id="questionBtn">책을 찾아줘</button>
       </form>
     </div>
     <script>
