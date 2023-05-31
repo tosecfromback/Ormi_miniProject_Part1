@@ -16,9 +16,115 @@
             width: 100px;
             height: 100px;
         }
+        table{
+            border: solid black 2px;
+        }
+        tr{
+            border: solid black 2px;
+        }
+        td{
+            border: solid black 2px;
+        }
+        .menucom{
+            border: solid black 2px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .reciepe{
+            border: solid black 2px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .result{
+            border: solid black 2px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
     </style>
   </head>
   <body>
+    <div class="main">
+        <section class="menucom">
+            <table class="menuquery">
+                <thead>
+                    <tr>
+                        <td colspan="3">준비된 재료</td>
+                        <td>요리의주제</td>
+                        <td>기능 사용 방법</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" name="" id="ing1" class="ingrediant" placeholder="재료를 입력해주세요"></td>
+                        <td></td>
+                        <td></td>
+                        <td rowspan="3"><select name="시간" id="">
+                            <option value="">아침</option>
+                            <option value="">점심</option>
+                            <option value="">간식</option>
+                            <option value="">저녁</option>
+                            <option value="">야식</option>
+                        </select></td>
+                        <td rowspan="6">
+                            <ul>
+                                <li>기본적으로 2개의 input으로 재료 선정</li>
+                                <li>추가버튼을 누르면 input을 1개 증가하고<br>추가는 아래로 제거버튼생성</li>
+                                <li>요리의 주제 상단은 식사 시간 선택</li>
+                                <li>요리의 주제 하단은 메뉴의 스타일선택</li>
+                                <li>결과는 result에서 list or table로 출력</li>
+                                <li></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="" id="ing2" class="ingrediant" placeholder="재료를 입력해주세요"></td>
+                        <td><button onclick="">추가</button></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="" id="ing3" class="ingrediant" placeholder="재료를 입력해주세요"></td>
+                        <td></td>
+                        <td><button onclick="">제거</button></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="" id="ing4" class="ingrediant" placeholder="재료를 입력해주세요"></td>
+                        <td></td>
+                        <td><button onclick="">제거</button></td>
+                        <td rowspan="3"><select name="테마" id="">
+                            <option value="">한식</option>
+                            <option value="">일식</option>
+                            <option value="">중식</option>
+                            <option value="">양식</option>
+                            <option value="">남미식</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="" id="ing5" class="ingrediant" placeholder="재료를 입력해주세요"></td>
+                        <td></td>
+                        <td><button onclick="">제거</button></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="" id="ing5" class="ingrediant" placeholder="재료를 입력해주세요"></td>
+                        <td><button onclick="">추가</button></td>
+                        <td><button onclick="">제거</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="reciepe">
+            <p>이 곳은 레시피를 검색하는 section입니다</p>
+            <p>메뉴추천을 이용해서 넘어 올 경우 추천된 메뉴의 목록이 나열</p>
+            <p>각각의 메뉴를 선택하면 결과창에서 메뉴의 레시피를 보여줍니다</p>
+            <p>메뉴추천을 이용하지 않고 탭을 이동 할 경우에는</p>
+            <p>요리의 주제에 따라 특정 갯수의 메뉴를 랜덤하게 반환</p>
+        </section>
+        <section class="result">
+            <p>이 곳은 각 탭의 기능에 따라 서로 다른 결과를 출력</p>
+            <p>메뉴추천 탭에서 결과를 반환하면 주어진 조건에 따른 메뉴의 목록</p>
+            <p>레시피 탭에서 결과를 반환하면 지정된 메뉴의 레시피를 출력</p>
+        </section>
+    </div>
+
     <div>
         <section id="answerArea">
             <ul></ul>
