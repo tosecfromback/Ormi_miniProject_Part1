@@ -16,11 +16,11 @@
             grid-template-columns: repeat(4, 1fr);
             grid-template-rows: 50px;
         }
-        /* #page_body {
+        #page_body {
             display: grid;
             grid-template-rows: repeat(4, 1fr);
             grid-template-columns: 100px 250px;
-        } */
+        }
         #page_body > input{
             border: solid black 1px;
         }
@@ -67,6 +67,9 @@
                     <!-- 검색어 텍스트 받음 -->
                     <button type="button" id="kwd_to_text">제출테스트</button> 
             </section>
+            <section id="page_result">
+                
+            </section>
             <section id="page_findlib">
                 전국의 도서관
             </section>
@@ -91,7 +94,7 @@
 
         ready_to_text.addEventListener("click", (e) => {
             console.log("버튼감지");
-            
+
             text_ready.push("kwd : "+kwd_text.value);
             text_ready.push("title : "+ttl_text.value);
             text_ready.push("author : "+ath_text.value);
