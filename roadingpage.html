@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loadingtest</title>
+</head>
+<body>
+    <div>
+        <section class="ready_to_loading">
+            <article class="before_loading">
+                <form id="kwd_form" action="post">
+                    <section id="page_search" class="grid h-1000 bg-white m-5 mb-3 rounded">
+                        <!-- 기본검색 -->
+                        <!-- <p>키워드</p>
+                        <input type="text" id="keyword_text" placeholder="키워드"> -->
+                        <!-- 상세검색 버튼시 하단 추가 생성 -->
+                        <p>서명</p>
+                        <input type="text" id="title_text" placeholder="서명">
+                        <p>저자</p>
+                        <input type="text" id="author_text" placeholder="저자">
+                        <p>출판사</p>
+                        <input type="text" id="publisher_text" placeholder="출판사">
+                        <!-- 검색어 텍스트 받음 -->
+                        <!-- <button type="button" id="kwd_to_text">제출테스트</button>  -->
+                        <button type="submit" id="testButton">로딩을 시켜봅시다</button>
+                </section>
+                    <!-- <input type="text" id="testinput" placeholder="질문을 주세요"> -->
+                </form>
+            </article>
+            <div id="loading"></div>
+            <div id="result">결과 url</div>
+        </section>
+    </div>
+
+    <script>
+        // let $testText = document.querySelector('#testinput')
+        let $textTitle = document.querySelector('#title_text')
+        let $textAuthor = document.querySelector('#author_text')
+        let $textPublish = document.querySelector('#publisher_text')
+        let $testButton = document.querySelector('#testButton')
+        let $url_list = document.querySelector("#result")
+        // let $result_list = document.querySelector('#result')
+
+        // let kwd_temp = document.querySelector('#kwd_form')
+        const key_url = "https://www.nl.go.kr/NL/search/openApi/searchKolisNet.do?key=f22eb1b2769cf9c57c567707017a7ae2d49711d6a0d5dabe5d1e2bbdff8bce9e&&apiType=json"
+
+        // 결과 url 저장공간
+        const printAnswer = (answer) => {
+            let li = document.createElement("li");
+            li.classList.add("answer")
+            li.innerText = answer;
+            $url_list.appendChild(li);
+        }
+
+        let url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`;
+
+        let data = [{
+            "role": "system",
+            "content": "assistant는 input을 받아 정해진 양식의 url로 만들어 줄 수 있다."
+        }]
+
+        // let searchdata = [];
+
+        // const textdata = ()
+        $testButton.addEventListener('click', e =>{
+            e.preventDefault()
+            userInputData = key_url
+            // $testText.value = ''
+
+            data.push({
+                "role" : "user",
+                "content" : userInputData+"이 url주소의 뒤에 &f1=title&v1=$textTitle&f2=author&v2=$textAuthor의 형식으로 url을 만들어줘. $textTitle은"+$textTitle.value+"가 들어가고 $textAuthor는"+$textAuthor.value+"로 바꿔주고 만들어진 url에 한글이 있으면 인코딩도 같이 해줘"
+            })
+
+            call_chatGPT()
+        })
+
+        function call_chatGPT(){
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type" : "application/json",
+                },
+                body: JSON.stringify(data),
+                redirect: "follow",
+            })
+            // fetch로 요청을 보내는 순간 로딩안내를 출력
+            .then(console.log(data))
+            .then(document.querySelector("#loading").innerText = "<p>로딩중입니다.<p>")
+            .then(res => res.json())
+            .then(res => {
+                console.log(res)
+                printAnswer(res.choices[0].message.content);
+                // 답변이 출력되면 로딩 구역의 text를 비워냄
+                document.querySelector("#loading").innerText = " "
+            })
+
+            console.log("답변 완료")
+
+        }
+    </script>
+</body>
+</html>

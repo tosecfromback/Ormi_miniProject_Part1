@@ -6,3 +6,24 @@ key=[발급키]
 &detailSearch=true
 &f1=author
 &v1=%EB%B0%95%EC%83%81%EA%B8%B8
+
+https://nl.go.kr/kolisnet/search/searchResultEditonList.do?
+tab=BKGM
+&subTab=
+&pageNum=1
+&pageSize=15
+&sortField=
+&sortOrder=
+&facetCollType=
+&facetYear=
+&facetKdc=
+&facetLang=
+&keywordType1=total
+&keyword1=%ED%8C%8C%EC%9D%B4%EC%8D%AC+%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98
+&bookFilter=BKGM
+&ufKey=44362499
+
+샘플 URL
+"토지"를 검색할 경우 : https://www.nl.go.kr/NL/search/openApi/search.do?key=[발급된키값]&apiType=xml&srchTarget=total&kwd=%ED%86%A0%EC%A7%80&pageSize=10&pageNum=1&category=&sort= "토지"를 검색할 경우[원문이용방법 관외이용(무료)] : https://www.nl.go.kr/NL/search/openApi/search.do?key=[발급된키값]&apiType=xml&srchTarget=total&kwd=%ED%86%A0%EC%A7%80&pageSize=10&pageNum=1&licYn=N ※ URL(한글)은 반드시 인코딩해야 함 ※ 상세검색은 kwd 값이 없을 경우 상세검색으로 인식합니다. Kwd 값과 상세검색 값은 혼용하여 사용이 불가능 합니다.
+상세검색 샘플 URL
+제목:"토지", 저자:"박경리"를 검색할 경우 : https://www.nl.go.kr/NL/search/openApi/search.do?key=[발급된키값]&kwd=%ED%86%A0%EC%A7%80&detailSearch=true&f1=title&v1=%ED%86%A0%EC%A7%80&f2=author&v2=%EB%B0%95%EA%B2%BD%EB%A6%AC ISBN 검색 : https://www.nl.go.kr/NL/search/openApi/search.do?key=[발급된키값]&detailSearch=true&isbnOp=isbn&isbnCode=8984993727
