@@ -23,39 +23,50 @@
         }
         #page_body > input{
             border: solid black 1px;
-        }#page_body > p {
+        }
+        p {
+            display: flex;
+            align-items: center;
             border: solid black 1px;
-            text-align: center;
         }
     </style>
   </head>
   <body>
     <main id="page_theme" class="bg-red-200">
         <header id="page_top" class="h-300 bg-white m-5 mb-3 rounded">
+            <!-- CSS시 logo 삽입 -->
             <p>상단영역</p>
         </header>
         <nav id="page_menu" class="h-300 bg-white m-5 mb-3 rounded">
+            <!-- 메인시작화면 -->
             <p>도서검색</p>
+            <!-- 전국도서관 별 홈페이지 연결 -->
             <p>전국의도서관</p>
+            <!-- 임시메뉴 -->
             <p>장서찾기</p>
+            <!-- 임시메뉴 -->
             <p>기타</p>
         </nav>
         <section id="page_body" class="grid h-1000 bg-white m-5 mb-3 rounded">
+            <!-- 기본검색 -->
             <p>키워드</p>
             <input type="text" id="keyword_text" placeholder="키워드">
+            <!-- 상세검색 버튼시 하단 추가 생성 -->
             <p>서명</p>
             <input type="text" id="title_text" placeholder="서명">
             <p>저자</p>
             <input type="text" id="author_text" placeholder="저자">
             <p>출판사</p>
             <input type="text" id="publisher_text" placeholder="출판사">
-            <button type="button" id="kwd_to_text">제출테스트</button>
+            <!-- 검색어 텍스트 받음 -->
+            <button type="button" id="kwd_to_text">제출테스트</button> 
         </section>
-        <aside id="page_side">
-            <p>사이드메뉴</p>
-        </aside>
         <footer id="page_bottom" class="h-300 bg-white m-5 mb-3 rounded">
             <p>하단구성</p>
+            <!-- OpenAPI 제공 포털 정보 -->
+            <span>국립중앙도서관</span>
+            <!-- 제작자 정보 -->
+            <span>GitHub Link</span>
         </footer>
     </main>
     
@@ -70,16 +81,15 @@
 
         ready_to_text.addEventListener("click", (e) => {
             console.log("버튼감지");
-            text_ready.push("kwd");
-            text_ready.push(kwd_text.value)
-            text_ready.push("title");
-            text_ready.push(ttl_text.value)
-            text_ready.push("author");
-            text_ready.push(ath_text.value)
-            text_ready.push("publisher");
-            text_ready.push(pbl_text.value)
+            text_ready.push("kwd : "+kwd_text.value);
+            text_ready.push("title : "+ttl_text.value);
+            text_ready.push("author : "+ath_text.value);
+            text_ready.push("publisher : "+pbl_text.value);
+            console.log(text_ready)
         })
         
+
+
     </script>
   </body>
 </html>
