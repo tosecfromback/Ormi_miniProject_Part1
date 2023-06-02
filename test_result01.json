@@ -1,0 +1,218 @@
+{
+    "root": {
+      "paramData": {
+        "kwd": "파이썬",
+        "category": "kolisNet",
+        "pageNum": 1,
+        "pageSize": 50,
+        "sort": "",
+        "total": 5
+      },
+      "result": {
+        "item": [
+          {
+            "title_info": {"__cdata": " 파이썬 알고리즘 인터뷰 : 95가지 알고리즘 문제 풀이로 완성하는 코딩 테스트 "
+            },
+            "type_name": "일반도서",
+            "place_info": "",
+            "author_info": {"#text": "박상길 지음 ;정진호 일러스트\\c","__cdata": " "
+            },
+            "pub_info": {
+              "__cdata": " 책만 "
+            },
+            "menu_name": "국가자료종합목록",
+            "media_name": "",
+            "manage_name": "",
+            "pub_year_info": 2020,
+            "control_no": "",
+            "doc_yn": "",
+            "org_link": {
+              "__cdata": " "
+            },
+            "id": 799780446,
+            "place_code": "",
+            "type_code": "B1",
+            "lic_yn": "",
+            "lic_text": "",
+            "reg_date": "",
+            "isbn": {
+              "__cdata": " "
+            },
+            "call_no": {
+              "__cdata": " "
+            },
+            "kdc_code_1s": {
+              "__cdata": " "
+            },
+            "kdc_name_1s": {
+              "__cdata": " "
+            }
+          },
+          {
+            "title_info": {
+              "__cdata": " 파이썬 알고리즘 인터뷰 : 95가지 알고리즘 문제 풀이로 완성하는 코딩 테스트 "
+            },
+            "type_name": "일반도서",
+            "place_info": "",
+            "author_info": {
+              "#text": "박상길 지음;정진호 일러스트\\c",
+              "__cdata": " "
+            },
+            "pub_info": {
+              "__cdata": " 책만 "
+            },
+            "menu_name": "국가자료종합목록",
+            "media_name": "",
+            "manage_name": "",
+            "pub_year_info": 2021,
+            "control_no": "",
+            "doc_yn": "",
+            "org_link": {
+              "__cdata": " "
+            },
+            "id": 984744308,
+            "place_code": "",
+            "type_code": "B1",
+            "lic_yn": "",
+            "lic_text": "",
+            "reg_date": "",
+            "isbn": {
+              "__cdata": " "
+            },
+            "call_no": {
+              "__cdata": " "
+            },
+            "kdc_code_1s": {
+              "__cdata": " "
+            },
+            "kdc_name_1s": {
+              "__cdata": " "
+            }
+          },
+          {
+            "title_info": {
+              "__cdata": " 파이썬 알고리즘 인터뷰 : 95가지 알고리즘 문제 풀이로 완성하는 코딩 테스트 "
+            },
+            "type_name": "일반도서",
+            "place_info": "",
+            "author_info": {
+              "#text": "지은이 박상길 ,일러스트 정진호\\c",
+              "__cdata": " "
+            },
+            "pub_info": {
+              "__cdata": " 책만 "
+            },
+            "menu_name": "국가자료종합목록",
+            "media_name": "",
+            "manage_name": "",
+            "pub_year_info": 2020,
+            "control_no": "",
+            "doc_yn": "",
+            "org_link": {
+              "__cdata": " "
+            },
+            "id": 838637211,
+            "place_code": "",
+            "type_code": "B1",
+            "lic_yn": "",
+            "lic_text": "",
+            "reg_date": "",
+            "isbn": {
+              "__cdata": " "
+            },
+            "call_no": {
+              "__cdata": " "
+            },
+            "kdc_code_1s": {
+              "__cdata": " "
+            },
+            "kdc_name_1s": {
+              "__cdata": " "
+            }
+          },
+          {
+            "title_info": {
+              "__cdata": " 파이썬 알고리즘 인터뷰 : 95가지 알고리즘 문제 풀이로 완성하는 코딩 테스트 "
+            },
+            "type_name": "일반도서",
+            "place_info": "",
+            "author_info": {
+              "#text": "박상길 지음 ;정진호 일러스트\\c",
+              "__cdata": " "
+            },
+            "pub_info": {
+              "__cdata": " 책만 "
+            },
+            "menu_name": "국가자료종합목록",
+            "media_name": "",
+            "manage_name": "",
+            "pub_year_info": 2020,
+            "control_no": "",
+            "doc_yn": "",
+            "org_link": {
+              "__cdata": " "
+            },
+            "id": 948816015,
+            "place_code": "",
+            "type_code": "B1",
+            "lic_yn": "",
+            "lic_text": "",
+            "reg_date": "",
+            "isbn": {
+              "__cdata": " "
+            },
+            "call_no": {
+              "__cdata": " "
+            },
+            "kdc_code_1s": {
+              "__cdata": " "
+            },
+            "kdc_name_1s": {
+              "__cdata": " "
+            }
+          },
+          {
+            "title_info": {
+              "__cdata": " 파이썬 알고리즘 인터뷰 : 95가지 알고리즘 문제 풀이로 완성하는 코딩 테스트 "
+            },
+            "type_name": "일반도서",
+            "place_info": "",
+            "author_info": {
+              "#text": "박상길 지음\\c",
+              "__cdata": " "
+            },
+            "pub_info": {
+              "__cdata": " 책만 "
+            },
+            "menu_name": "국가자료종합목록",
+            "media_name": "",
+            "manage_name": "",
+            "pub_year_info": 2022,
+            "control_no": "",
+            "doc_yn": "",
+            "org_link": {
+              "__cdata": " "
+            },
+            "id": 1022718267,
+            "place_code": "",
+            "type_code": "B1",
+            "lic_yn": "",
+            "lic_text": "",
+            "reg_date": "",
+            "isbn": {
+              "__cdata": " "
+            },
+            "call_no": {
+              "__cdata": " "
+            },
+            "kdc_code_1s": {
+              "__cdata": " "
+            },
+            "kdc_name_1s": {
+              "__cdata": " "
+            }
+          }
+        ]
+      }
+    }
+  }
