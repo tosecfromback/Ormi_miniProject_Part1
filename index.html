@@ -16,11 +16,11 @@
             grid-template-columns: repeat(4, 1fr);
             grid-template-rows: 50px;
         }
-        #page_body {
+        /* #page_body {
             display: grid;
             grid-template-rows: repeat(4, 1fr);
             grid-template-columns: 100px 250px;
-        }
+        } */
         #page_body > input{
             border: solid black 1px;
         }
@@ -29,10 +29,15 @@
             align-items: center;
             border: solid black 1px;
         }
+        span {
+            display: grid;
+            align-items: center;
+            border: solid black 1px;
+        }
     </style>
   </head>
   <body>
-    <main id="page_theme" class="bg-red-200">
+    <div id="page_theme" class="bg-red-200">
         <header id="page_top" class="h-300 bg-white m-5 mb-3 rounded">
             <!-- CSS시 logo 삽입 -->
             <p>상단영역</p>
@@ -47,20 +52,25 @@
             <!-- 임시메뉴 -->
             <p>기타</p>
         </nav>
-        <section id="page_body" class="grid h-1000 bg-white m-5 mb-3 rounded">
-            <!-- 기본검색 -->
-            <p>키워드</p>
-            <input type="text" id="keyword_text" placeholder="키워드">
-            <!-- 상세검색 버튼시 하단 추가 생성 -->
-            <p>서명</p>
-            <input type="text" id="title_text" placeholder="서명">
-            <p>저자</p>
-            <input type="text" id="author_text" placeholder="저자">
-            <p>출판사</p>
-            <input type="text" id="publisher_text" placeholder="출판사">
-            <!-- 검색어 텍스트 받음 -->
-            <button type="button" id="kwd_to_text">제출테스트</button> 
-        </section>
+        <main id="page_body">
+            <section id="page_search" class="grid h-1000 bg-white m-5 mb-3 rounded">
+                    <!-- 기본검색 -->
+                    <p>키워드</p>
+                    <input type="text" id="keyword_text" placeholder="키워드">
+                    <!-- 상세검색 버튼시 하단 추가 생성 -->
+                    <p>서명</p>
+                    <input type="text" id="title_text" placeholder="서명">
+                    <p>저자</p>
+                    <input type="text" id="author_text" placeholder="저자">
+                    <p>출판사</p>
+                    <input type="text" id="publisher_text" placeholder="출판사">
+                    <!-- 검색어 텍스트 받음 -->
+                    <button type="button" id="kwd_to_text">제출테스트</button> 
+            </section>
+            <section id="page_findlib">
+                전국의 도서관
+            </section>
+        </main>
         <footer id="page_bottom" class="h-300 bg-white m-5 mb-3 rounded">
             <p>하단구성</p>
             <!-- OpenAPI 제공 포털 정보 -->
@@ -68,7 +78,7 @@
             <!-- 제작자 정보 -->
             <span>GitHub Link</span>
         </footer>
-    </main>
+    </div>
     
     <script>
         const kwd_text = document.querySelector("#keyword_text");
