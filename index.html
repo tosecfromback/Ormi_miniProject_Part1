@@ -60,13 +60,13 @@
             overflow: hidden;
             width: 360px;
             height: 72px;
-            background: url('nl_logo.png') no-repeat;
+            background: url('./resource/Img/nl_logo.png') no-repeat;
             background-size: 100% 100%;
         }#git_logo{
             overflow: hidden;
             width: 72px;
             height: 72px;
-            background: url('git_logo.png') no-repeat;
+            background: url('./resource/Img/git_logo.png') no-repeat;
             background-size: 100% 100%;
         }
     </style>
@@ -103,11 +103,10 @@
                     <button type="button" id="kwd_to_text">제출테스트</button> 
             </section>
             <section id="page_result">
-                
             </section>
-            <section id="page_findlib">
+            <!-- <section id="page_findlib">
                 전국의 도서관
-            </section>
+            </section> -->
         </main>
         <footer id="page_bottom" class="h-300 m-5 mb-3 rounded">
             <!-- <p>하단구성</p> -->
@@ -145,25 +144,42 @@
         const ready_to_text = document.querySelector("#kwd_to_text");
         const body = document.querySelector("#page_body");
         
-        
+        let lib_json = new XMLHttpRequest();
+        let lib_list_data = {};
+        lib_json.open('GET', 'https://raw.githubusercontent.com/tosecfromback/Ormi_miniProject_Part1/main/resource/Json/lib_link.json', true);
+        lib_json.send();
+
+        console.log(lib_json.status)
+        lib_json.onload = function(){
+            if (lib_json.status === 200){
+                lib_list_data = JSON.parse(lib_json.responseText);
+            }
+            else {
+                console.log("현재 참조파일을 불러 올 수 없습니다.")
+            }
+        }
+
         let change_page = document.querySelector("#chng_page");
         change_page.addEventListener("click", (e) => {
-            body.innerHTML= '<section id="lib_listset"><ul id="korea_lib_list"></ul></section>';
-            
-            let lib_li = document.createElement("li")
-            lib_li.innerText = "도서관리스트01"
-            let lib_name = document.createElement("span")
-            lib_name.innerText = "도서관이름"
-            let lib_adrs = document.createElement("span")
-            lib_adrs.innerText = "도서관주소"
-            let lib_link = document.createElement("span")
-            lib_open.innerText = "도서관url"
+        body.innerHTML= '<section id="lib_listset"><ul id="korea_lib_list"></ul></section>';
+        for (const item of lib_list_data) {
 
+            let lib_li = document.createElement("li");
+            lib_li.innerText = item.lib_local;
+            let lib_name = document.createElement("span");
+            lib_name.innerText = item.lib_name;
+            let lib_adrs = document.createElement("span");
+            lib_adrs.innerText = item.lib_adrs;
+            let lib_link = document.createElement("span");
+            lib_link.innerText = item.lib_link;
+            
             lib_li.appendChild(lib_name);
             lib_li.appendChild(lib_adrs);
             lib_li.appendChild(lib_link);
 
             body.appendChild(lib_li)
+        }
+
         })
 
         let text_ready = {
