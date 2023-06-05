@@ -1,0 +1,33 @@
+[
+    { 
+        "lib_local" : "서울특별시",
+        "lib_name" : "서울도서관",
+        "lib_adrs" : "서울도서관 서울특별시 중구 세종대로 110",
+        "lib_url" : "https://lib.seoul.go.kr/slibsrch/main"
+    }, { 
+        "lib_local" : "부산광역시",
+        "lib_name" : "부산광역시 도서관포털",
+        "lib_adrs" : "부산광역시 사상구 사상로310번길 33(덕포동)",
+        "lib_url" : "https://library.busan.go.kr/portal/module/libraryInfo/index.do?menu_idx=73&lib_cate_code=0001"
+    }, { 
+        "lib_local" : "대구광역시",
+        "lib_name" : "대구통합도서관",
+        "lib_adrs" : "대구 중구 동덕로 115 (삼덕동2가, 진석타워)",
+        "lib_url" : "https://library.daegu.go.kr/dgportal/board/index.do?menu_idx=18&manage_idx=287"
+    }, { 
+        "lib_local" : "광주광역시", 
+        "lib_name" : "광주광역시교육청통합도서관", 
+        "lib_adrs" : "광주광역시 서구 학생독립로 30(화정동 512) 광주학생독립운동기념회관", 
+        "lib_url" : "https://lib.gen.go.kr/main/contents.do?idx=1756"
+    }, { 
+        "lib_local" : "대전광역시", 
+        "lib_name" : "대전사이버도서관", 
+        "lib_adrs" : "대전광역시 중구 서문로 10(문화동)", 
+        "lib_url" : "https://www.u-library.kr/libInfo/list/libkind?type=1&mId=206020100"
+    }, { 
+        "lib_local" : "울산광역시",
+        "lib_name" : "울산도서관",
+        "lib_adrs" : "울산광역시 남구 꽃대나리로 140(여천동)",
+        "lib_url" : "https://library.ulsan.go.kr/page/introduction/map.do"
+    }
+]
