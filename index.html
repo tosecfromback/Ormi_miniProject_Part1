@@ -10,18 +10,35 @@
        #page_theme{
             display: grid;
        }
+       #GPTTest{
+            display: grid;
+       }
+       #questioninput {
+            overflow: auto;
+            width: 300px;
+            height: 100px;
+            border: solid red 1px;
+        }
+        #questionBtn {
+            width: 100px;
+            height: 100px;
+            border: solid red 1px;
+       }
 
        #page_menu {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             grid-template-rows: 50px;
         }
-        #page_body {
+        #page_body > #page_search{
             display: grid;
             grid-template-rows: repeat(4, 1fr);
             grid-template-columns: 100px 250px;
         }
         #page_body > input{
+            border: solid black 1px;
+        }
+        #page_body > button{
             border: solid black 1px;
         }
         p {
@@ -82,6 +99,15 @@
             <span>GitHub Link</span>
         </footer>
     </div>
+        <div id="GPTTest"  class="grid bg-blue-300 h-300 m-5">
+            <section id="answerArea">
+                <ul></ul>
+            </section>
+            <form action="post" id="questionArea">
+            <input type="textarea" id="questioninput" autofocus />
+            <button type="submit" id="questionBtn">질문</button>
+            </form>
+        </div>
     
     <script>
         const kwd_text = document.querySelector("#keyword_text");
@@ -90,20 +116,123 @@
         const pbl_text = document.querySelector("#publisher_text");
         const ready_to_text = document.querySelector("#kwd_to_text");
 
-        let text_ready = [];
+        let text_ready = {
+            kwd : '',
+            title : '',
+            author : '',
+            publisher : '',
+        };
+        let searchCnt = 0;
 
         ready_to_text.addEventListener("click", (e) => {
             console.log("버튼감지");
 
-            text_ready.push("kwd : "+kwd_text.value);
-            text_ready.push("title : "+ttl_text.value);
-            text_ready.push("author : "+ath_text.value);
-            text_ready.push("publisher : "+pbl_text.value);
-            console.log(text_ready)
+            text_ready.kwd = kwd_text.value;
+            text_ready.title = ttl_text.value;
+            text_ready.author = ath_text.value;
+            text_ready.publisher = pbl_text.value;
+
+            // text_ready.push(searchCnt.value);
+            // text_ready[searchCnt.value].appendChild("kwd : "+kwd_text.value);
+            // text_ready[searchCnt.value].appendChild("title : "+ttl_text.value);
+            // text_ready[searchCnt.value].appendChild("author : "+ath_text.value);
+            // text_ready[searchCnt.value].appendChild("publisher : "+pbl_text.value);
+            // searchCnt += 1;
+            console.log(text_ready);
         })
-        
+      
 
+    // 임시 GPT 연동
+        const $form = document.querySelector("#questionArea");
+        const $input = document.querySelector("#questioninput");
+        const $chatList = document.querySelector("#answerArea");
 
+        // const inputtmp = document.querySelector("input")
+        // openAI API
+        let url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`;
+
+        // 사용자의 질문
+        let question;
+
+        // 질문과 답변 저장
+        let data = [
+        {
+            role: "system",
+            content: "assistant는 친절한 답변가이다.",
+        },
+        ];
+
+        // 화면에 뿌려줄 데이터, 질문들
+        let questionData = [];
+
+        // input에 입력된 질문 받아오는 함수
+        $input.addEventListener("input", (e) => {
+        question = e.target.value;
+        });
+
+        // 사용자의 질문을 객체를 만들어서 push
+        const sendQuestion = (question) => {
+        if (question) {
+            data.push({
+            role: "user",
+            content: question,
+            });
+            questionData.push({
+            role: "user",
+            content: question,
+            });
+        }
+        };
+
+        // 화면에 질문 그려주는 함수
+        const printQuestion = async () => {
+        if (question) {
+            let li = document.createElement("li");
+            li.classList.add("question");
+            questionData.map((el) => {
+            li.innerText = el.content;
+            });
+            $chatList.appendChild(li);
+            questionData = [];
+            question = false;
+        }
+        };
+
+        // 화면에 답변 그려주는 함수
+        const printAnswer = (answer) => {
+        let li = document.createElement("li");
+        li.classList.add("answer");
+        li.innerText = answer;
+        $chatList.appendChild(li);
+        };
+
+        // api 요청보내는 함수
+        const apiPost = async () => {
+        const result = await fetch(url, {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+            redirect: "follow",
+        })
+            .then((res) => res.json())
+            .then((res) => {
+            printAnswer(res.choices[0].message.content);
+            })
+            .catch((err) => {
+            console.log(err);
+            });
+        };
+
+        // submit
+        $form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        $input.value = null;
+        sendQuestion(question);
+        apiPost();
+        printQuestion();
+        });
     </script>
   </body>
 </html>
