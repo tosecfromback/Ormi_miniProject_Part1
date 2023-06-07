@@ -35,6 +35,11 @@
             grid-template-rows: repeat(4, 1fr);
             grid-template-columns: 100px 250px;
         }
+        #main_page > #page_search > #search_page{
+            display: grid;
+            grid-template-rows: repeat(4, 1fr);
+            grid-template-columns: 100px 250px;
+        }
         #main_page > input{
             border: solid black 1px;
         }
@@ -79,7 +84,7 @@
         </header>
         <nav id="page_menu" class="h-300 bg-white m-5 mb-3 rounded">
             <!-- 메인시작화면 -->
-            <p>도서검색</p>
+            <button type="button" id="chng_main">도서검색</button>
             <!-- 전국도서관 별 홈페이지 연결 -->
             <button type="button" id="library_list_page">전국의도서관</button>
             <!-- 임시메뉴 -->
@@ -89,7 +94,7 @@
         </nav>
         <main id="main_page">
             <section id="page_search" class="grid h-1000 bg-white m-5 mb-3 rounded">
-                    기본검색
+                    <!-- 기본검색
                     <p>키워드</p>
                     <input type="text" id="keyword_text" placeholder="키워드" value="코딩 인터뷰">
                     상세검색 버튼시 하단 추가 생성
@@ -99,7 +104,7 @@
                     <input type="text" id="author_text" placeholder="저자" value="게일 라크만">
                     <p>출판사</p>
                     <input type="text" id="publisher_text" placeholder="출판사" value="인사이트">
-                    검색어 텍스트 받음
+                    검색어 텍스트 받음 -->
                     <button type="button" id="kwd_to_text">제출테스트</button> 
                     <button type="button" id="url_test">url테스트</button> 
                     <button type="button" id="request_test">요청테스트</button> 
@@ -140,79 +145,87 @@
         const $pbl_text = document.querySelector("#publisher_text");
         const $ready_to_text = document.querySelector("#kwd_to_text");
 
-        // // 검색페이지 출력 및 검색페이지 복귀
-        // const $main_section = document.createElement("section");
-        // const $srch_artichle = document.createElement("article");
-        // const $rslt_artichle = document.createElement("article");
+        // 검색페이지 출력 및 검색페이지 복귀
+        const $main_section = document.createElement("section");
+        const $srch_article = document.createElement("article");
+        const $rslt_article = document.createElement("article");
 
-        // const $set_main = document.querySelector("#chng_main");
+        let set_main = document.querySelector("#chng_main");
 
-        // $set_main.addEventListener("click", (e) => {
-        //     const kwd_tag = document.createElement("p");
-        //     const kwd_input = document.createElement("input");
-        //     const ttl_tag = document.createElement("p");
-        //     const ttl_input = document.createElement("input");
-        //     const ath_tag = document.createElement("p");
-        //     const ath_input = document.createElement("input");
-        //     const pbl_tag = document.createElement("p");
-        //     const pbl_input = document.createElement("input");
-
-        //     const test_submit = document.createElement("button");
-        //     const test_url = document.createElement("button");
-        //     const test_request = document.createElement("button");
-
+        set_main.addEventListener("click", (e) => {
+            $main_section.setAttribute("id", "page_search")
+            // $srch_article.setAttribute("id", "search_part")
+            // $rslt_article.setAttribute("id", "result_part")
             
-        //     <button type="button" id="kwd_to_text">제출테스트</button> 
-        //     <button type="button" id="url_test">url테스트</button> 
-        //     <button type="button" id="request_test">요청테스트</button>
+            $rslt_article.textContent = "검색결과출력구역"
 
-        //     kwd_tag.textContent = "키워드"
-        //     ttl_tag.textContent = "서명"
-        //     ath_tag.textContent = "저자"
-        //     pbl_tag.textContent = "출판사"
+            $body.innerHTML = ""
+            
+            $body.appendChild($main_section)
+            // $main_section.appendChild($srch_article)
+            
+            const kwd_tag = document.createElement("p");
+            const kwd_input = document.createElement("input");
+            const ttl_tag = document.createElement("p");
+            const ttl_input = document.createElement("input");
+            const ath_tag = document.createElement("p");
+            const ath_input = document.createElement("input");
+            const pbl_tag = document.createElement("p");
+            const pbl_input = document.createElement("input");
+            
+            const test_submit = document.createElement("button");
+            const test_url = document.createElement("button");
+            const test_request = document.createElement("button");
+            
+            kwd_tag.textContent = "키워드"
+            ttl_tag.textContent = "서명"
+            ath_tag.textContent = "저자"
+            pbl_tag.textContent = "출판사"
+            
+            kwd_input.setAttribute("id", "keyword_text")
+            kwd_input.setAttribute("placeholder", "키워드")
+            kwd_input.textContent = "코딩 인터뷰"
+            ttl_input.setAttribute("id", "title_text")
+            ttl_input.setAttribute("placeholder", "서명")
+            ttl_input.textContent = "코딩 인터뷰"
+            ath_input.setAttribute("id", "author_text")
+            ath_input.setAttribute("placeholder", "저자")
+            ath_input.textContent = "코딩 인터뷰"
+            pbl_input.setAttribute("id", "publisher_text")
+            pbl_input.setAttribute("placeholder", "출판사")
+            pbl_input.textContent = "코딩 인터뷰"
+            
+            test_submit.setAttribute("type", "button")
+            test_submit.setAttribute("id", "kwd_to_test")
+            test_submit.textContent = "제출테스트"
+            test_url.setAttribute("type", "button")
+            test_url.setAttribute("id", "url_test")
+            test_url.textContent = "url테스트"
+            test_request.setAttribute("type", "button")
+            test_request.setAttribute("id", "request_test")
+            test_request.textContent = "요청테스트"
+            
+            $main_section.appendChild(kwd_tag);
+            $main_section.appendChild(kwd_input);
+            $main_section.appendChild(ttl_tag);
+            $main_section.appendChild(ttl_input);
+            $main_section.appendChild(ath_tag);
+            $main_section.appendChild(ath_input);
+            $main_section.appendChild(pbl_tag);
+            $main_section.appendChild(pbl_input);
+            $main_section.appendChild(test_submit);
+            $main_section.appendChild(test_url);
+            $main_section.appendChild(test_request);
 
-        //     kwd_input.setAttribute("id", "keyword_text")
-        //     kwd_input.setAttribute("placeholder", "키워드")
-        //     kwd_input.textContent = "코딩 인터뷰"
-        //     ttl_input.setAttribute("id", "title_text")
-        //     ttl_input.setAttribute("placeholder", "서명")
-        //     ttl_input.textContent = "코딩 인터뷰"
-        //     ath_input.setAttribute("id", "author_text")
-        //     ath_input.setAttribute("placeholder", "저자")
-        //     ath_input.textContent = "코딩 인터뷰"
-        //     pbl_input.setAttribute("id", "publisher_text")
-        //     pbl_input.setAttribute("placeholder", "출판사")
-        //     pbl_input.textContent = "코딩 인터뷰"
-
-        //     test_.setAttribute("type", "button")
-        //     test_.setAttribute("id", "kwd_to_test")
-        //     test_.textContent = "제출테스트"
-        //     test_.setAttribute("type", "button")
-        //     test_.setAttribute("id", "url_test")
-        //     test_.textContent = "url테스트"
-        //     test_.setAttribute("type", "button")
-        //     test_.setAttribute("id", "request_test")
-        //     test_.textContent = 테스트"
-
-        //     $set_main.appendChild(kwd_tag);
-        //     $set_main.appendChild(kwd_input);
-        //     $set_main.appendChild(ttl_tag);
-        //     $set_main.appendChild(ttl_input);
-        //     $set_main.appendChild(ath_tag);
-        //     $set_main.appendChild(ath_input);
-        //     $set_main.appendChild(pbl_tag);
-        //     $set_main.appendChild(pbl_input);
-        //     $set_main.appendChild(test_submit);
-        //     $set_main.appendChild(test_url);
-        //     $set_main.appendChild(test_request);
-        // })
+            $main_section.appendChild($rslt_article);
+        })
         
         // 전국도서관 리스트 페이지 변경
         let lib_json = new XMLHttpRequest();
         let lib_list_data = {};
         lib_json.open('GET', 'https://raw.githubusercontent.com/tosecfromback/Ormi_miniProject_Part1/main/resource/Json/lib_link.json', true);
         lib_json.send();
-
+        
         console.log(lib_json.status)
         lib_json.onload = function(){
             if (lib_json.status === 200){
