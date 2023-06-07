@@ -30,15 +30,15 @@
             grid-template-columns: repeat(4, 1fr);
             grid-template-rows: 50px;
         }
-        #main_page > #page_search{
+        #page_body > #page_search{
             display: grid;
             grid-template-rows: repeat(4, 1fr);
             grid-template-columns: 100px 250px;
         }
-        #main_page > input{
+        #page_body > input{
             border: solid black 1px;
         }
-        #main_page > button{
+        #page_body > button{
             border: solid black 1px;
         }
         p {
@@ -81,45 +81,43 @@
             <!-- 메인시작화면 -->
             <p>도서검색</p>
             <!-- 전국도서관 별 홈페이지 연결 -->
-            <button type="button" id="library_list_page">전국의도서관</button>
+            <button type="button" id="chng_page">전국의도서관</button>
             <!-- 임시메뉴 -->
             <p>장서찾기</p>
             <!-- 임시메뉴 -->
             <p>기타</p>
         </nav>
-        <main id="main_page">
+        <main id="page_body">
             <section id="page_search" class="grid h-1000 bg-white m-5 mb-3 rounded">
                     <!-- 기본검색 -->
                     <p>키워드</p>
-                    <input type="text" id="keyword_text" placeholder="키워드" value="파이썬">
+                    <input type="text" id="keyword_text" placeholder="키워드">
                     <!-- 상세검색 버튼시 하단 추가 생성 -->
                     <p>서명</p>
-                    <input type="text" id="title_text" placeholder="서명" value="코딩 인터뷰 완전 분석">
+                    <input type="text" id="title_text" placeholder="서명">
                     <p>저자</p>
-                    <input type="text" id="author_text" placeholder="저자" value="게일 라크만">
+                    <input type="text" id="author_text" placeholder="저자">
                     <p>출판사</p>
-                    <input type="text" id="publisher_text" placeholder="출판사" value="인사이트">
+                    <input type="text" id="publisher_text" placeholder="출판사">
                     <!-- 검색어 텍스트 받음 -->
                     <button type="button" id="kwd_to_text">제출테스트</button> 
-                    <button type="button" id="url_test">url테스트</button> 
-                    <button type="button" id="request_test">요청테스트</button> 
-                </section>
+            </section>
+            <section id="page_result">
+            </section>
+            <!-- <section id="page_findlib">
+                전국의 도서관
+            </section> -->
         </main>
         <footer id="page_bottom" class="h-300 m-5 mb-3 rounded">
             <!-- <p>하단구성</p> -->
             <!-- OpenAPI 제공 포털 정보 -->
             <h2>
                 <a href="https://www.nl.go.kr/">
-                    <p id="refer_logo" >국립중앙도서관</p>
+                    <span id="refer_logo" >국립중앙도서관</span>
                 </a>
             </h2>
             <!-- 제작자 정보 -->
-            <h2>
-                <a href="https://github.com/tosecfromback/Ormi_miniProject_Part1">
-                    <p id="git_logo">GitHub Link</p>
-                </a>
-            </h2>
-
+            <p id="git_logo">GitHub Link</p>
         </footer>
     </div>
         <div id="GPTTest"  class="grid bg-blue-300 h-300 m-5">
@@ -127,10 +125,16 @@
                 <ul></ul>
             </section>
             <form action="post" id="questionArea">
-            <input type="textarea" id="questioninput" autofocus wrap="physical" placeholder="GPT의 활용방안 구상 중">
+            <input type="textarea" id="questioninput" autofocus wrap="physical">
             <button type="submit" id="questionBtn">질문</button>
             </form>
         </div>
+
+        <section id="lib_listset">
+            <ul id="korea_lib_list">
+
+            </ul>
+        </section>
     
     <script>
         const kwd_text = document.querySelector("#keyword_text");
@@ -138,9 +142,8 @@
         const ath_text = document.querySelector("#author_text");
         const pbl_text = document.querySelector("#publisher_text");
         const ready_to_text = document.querySelector("#kwd_to_text");
-        const body = document.querySelector("#main_page");
+        const body = document.querySelector("#page_body");
         
-        // 전국도서관 리스트 페이지 변경
         let lib_json = new XMLHttpRequest();
         let lib_list_data = {};
         lib_json.open('GET', 'https://raw.githubusercontent.com/tosecfromback/Ormi_miniProject_Part1/main/resource/Json/lib_link.json', true);
@@ -156,103 +159,54 @@
             }
         }
 
-        let change_page = document.querySelector("#library_list_page");
+        let change_page = document.querySelector("#chng_page");
         change_page.addEventListener("click", (e) => {
         body.innerHTML= '<section id="lib_listset"><ul id="korea_lib_list"></ul></section>';
-            for (const item of lib_list_data) {
+        for (const item of lib_list_data) {
 
-                let lib_li = document.createElement("li");
-                lib_li.innerText = item.lib_local;
-                let lib_name = document.createElement("p");
-                lib_name.innerText = item.lib_name;
-                let lib_adrs = document.createElement("p");
-                lib_adrs.innerText = item.lib_adrs;
-                let lib_link = document.createElement("a");
-                lib_link.setAttribute("href", item.lib_url);
-                lib_link.textContent = item.lib_url;
-                
-                lib_li.appendChild(lib_name);
-                lib_li.appendChild(lib_adrs);
-                lib_li.appendChild(lib_link);
+            let lib_li = document.createElement("li");
+            lib_li.innerText = item.lib_local;
+            let lib_name = document.createElement("span");
+            lib_name.innerText = item.lib_name;
+            let lib_adrs = document.createElement("span");
+            lib_adrs.innerText = item.lib_adrs;
+            let lib_link = document.createElement("span");
+            lib_link.innerText = item.lib_link;
+            
+            lib_li.appendChild(lib_name);
+            lib_li.appendChild(lib_adrs);
+            lib_li.appendChild(lib_link);
 
-                body.appendChild(lib_li)
-            }
+            body.appendChild(lib_li)
+        }
+
         })
 
-        // 도서검색 값 준비
         let text_ready = {
             kwd : '',
             title : '',
             author : '',
             publisher : '',
         };
+        let searchCnt = 0;
 
         ready_to_text.addEventListener("click", (e) => {
+            console.log("버튼감지");
+
             text_ready.kwd = kwd_text.value;
             text_ready.title = ttl_text.value;
             text_ready.author = ath_text.value;
             text_ready.publisher = pbl_text.value;
+
+            // text_ready.push(searchCnt.value);
+            // text_ready[searchCnt.value].appendChild("kwd : "+kwd_text.value);
+            // text_ready[searchCnt.value].appendChild("title : "+ttl_text.value);
+            // text_ready[searchCnt.value].appendChild("author : "+ath_text.value);
+            // text_ready[searchCnt.value].appendChild("publisher : "+pbl_text.value);
+            // searchCnt += 1;
             console.log(text_ready);
         })
-
-        // 도서검색 입력값 출력
-
-        
-        // 도서검색 url 준비
-        let requestData = "https://www.nl.go.kr/NL/search/openApi/searchKolisNet.do?key=f22eb1b2769cf9c57c567707017a7ae2d49711d6a0d5dabe5d1e2bbdff8bce9e&kwd=";
-        const $url_maker = document.querySelector("#url_test");
-
-        $url_maker.addEventListener("click", (e) => {
-            console.log("요청진행1")
-            requestData.concat(encodeURI(text_ready.kwd))
-            requestData.concat("&pageNum=1&pageSize=50&detailSearch=true&f1=title&v1=")
-            requestData.concat(encodeURI(text_ready.title))
-            requestData.concat("&f2=author&v2=")
-            requestData.concat(encodeURI(text_ready.author))
-            requestData.concat("&f2=author&v2=")
-            requestData.concat(encodeURI(text_ready.kwd))
-            requestData.concat("&f3=publisher&v3=")
-            requestData.concat(encodeURI(text_ready.publisher))
-            requestData.concat("&apiType=json")
-            console.log(requestData)
-        })
-        
-        // 도서검색 url 요청테스트
-        
-        // const requestUrl = new XMLHttpRequest();
-        // let responseData = {};
-        // const requestTest = document.querySelector("#request_test");
-        // requestTest.addEventListener("onclick", (e) =>{
-        //     requestUrl.open('GET', requestData)
-        //     requestUrl.send();
-    
-        //     requestUrl.onload = function(){
-        //         if(requestUrl.status === 200){
-        //             console.log(requestUrl.status)
-        //             responseData = JSON.parse(requestUrl.responseText);
-        //             console.log(responseData)
-        //         }
-        //     }
-        // })
-
-        // 도서검색 결과 창 출력
-        const $sampleJson = new XMLHttpRequest();
-        let sampleData = {};
-        const $requestTest = document.querySelector("#request_test");
-
-        $requestTest.addEventListener("click", (e) => {
-            $sampleJson.open('GET', 'https://raw.githubusercontent.com/tosecfromback/Ormi_miniProject_Part1/main/test_result01.json', true);
-            $sampleJson.send();
-    
-            $sampleJson.onload = function(){
-                if ($sampleJson.status === 200){
-                    console.log($sampleJson.status)
-                    sampleData = JSON.parse($sampleJson.responseText);
-                    console.log(sampleData);
-                }
-            }
-
-        })
+      
 
     // 임시 GPT 연동
         const $form = document.querySelector("#questionArea");
