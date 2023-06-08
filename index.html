@@ -148,12 +148,12 @@
         const $ready_to_text = document.querySelector("#kwd_to_text");
 
         // 검색페이지 출력 및 검색페이지 복귀
-        const $srch_section = document.createElement("section");
-        const $rslt_section = document.createElement("section");
-
+        
         const $set_main = document.querySelector("#search_page");
-
+        
         function searchBuild(){
+            const $srch_section = document.createElement("section");
+            const $rslt_section = document.createElement("section");
             $body.innerHTML = "";
     
             const kwd_tag = document.createElement("p");
@@ -226,10 +226,10 @@
     
             $body.appendChild($srch_section);
             $body.appendChild($rslt_section);
+            return;
         }
 
         $set_main.addEventListener("click", (e) => {
-            $body.innerHTML = 0;
             searchBuild();
         })
         
