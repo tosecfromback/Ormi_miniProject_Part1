@@ -89,17 +89,17 @@
         </nav>
         <main id="main_page">
             <section id="page_search" class="grid h-1000 bg-white m-5 mb-3 rounded">
-                    기본검색
+                    <!-- 기본검색 -->
                     <p>키워드</p>
                     <input type="text" id="keyword_text" placeholder="키워드" value="코딩 인터뷰">
-                    상세검색 버튼시 하단 추가 생성
+                    <!-- 상세검색 버튼시 하단 추가 생성 -->
                     <p>서명</p>
                     <input type="text" id="title_text" placeholder="서명" value="코딩 인터뷰 완전 분석">
                     <p>저자</p>
                     <input type="text" id="author_text" placeholder="저자" value="게일 라크만">
                     <p>출판사</p>
                     <input type="text" id="publisher_text" placeholder="출판사" value="인사이트">
-                    검색어 텍스트 받음
+                    <!-- 검색어 텍스트 받음 -->
                     <button type="button" id="kwd_to_text">제출테스트</button> 
                     <button type="button" id="url_test">url테스트</button> 
                     <button type="button" id="request_test">요청테스트</button> 
@@ -266,7 +266,7 @@
 
         
         // 도서검색 url 준비
-        let requestData = "https://www.nl.go.kr/NL/search/openApi/searchKolisNet.do?key=f22eb1b2769cf9c57c567707017a7ae2d49711d6a0d5dabe5d1e2bbdff8bce9e&kwd=";
+        let requestData = "https://www.nl.go.kr/NL/search/openApi/search.do?key=f22eb1b2769cf9c57c567707017a7ae2d49711d6a0d5dabe5d1e2bbdff8bce9e&kwd=";
         const $url_maker = document.querySelector("#url_test");
 
         $url_maker.addEventListener("click", (e) => {
@@ -281,42 +281,22 @@
             console.log(requestData)
         })
         
-        // 도서검색 url 요청테스트
-        
-        // const requestUrl = new XMLHttpRequest();
-        // let responseData = {};
-        // const requestTest = document.querySelector("#request_test");
-        // requestTest.addEventListener("onclick", (e) =>{
-        //     requestUrl.open('GET', requestData)
-        //     requestUrl.send();
-    
-        //     requestUrl.onload = function(){
-        //         if(requestUrl.status === 200){
-        //             console.log(requestUrl.status)
-        //             responseData = JSON.parse(requestUrl.responseText);
-        //             console.log(responseData)
-        //         }
-        //     }
-        // })
 
         // 도서검색 결과 창 출력
-        const $sampleJson = new XMLHttpRequest();
+        const sampleUrl = "https://www.nl.go.kr/NL/search/openApi/search.do?key=f22eb1b2769cf9c57c567707017a7ae2d49711d6a0d5dabe5d1e2bbdff8bce9e&kwd=%EC%BD%94%EB%94%A9%EC%9D%B8%ED%84%B0%EB%B7%B0&pageNum=1&pageSize=50&detailSearch=true&f1=title&v1=%EC%BD%94%EB%94%A9%EC%9D%B8%ED%84%B0%EB%B7%B0%EC%99%84%EC%A0%84%EB%B6%84%EC%84%9D&f2=author&v2=%EA%B2%8C%EC%9D%BC%EB%9D%BC%ED%81%AC%EB%A7%8C&f3=publisher&v3=%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8&apiType=json"
         let sampleData = {};
         const $requestTest = document.querySelector("#request_test");
 
-        $requestTest.addEventListener("click", (e) => {
-            $sampleJson.open('GET', 'https://raw.githubusercontent.com/tosecfromback/Ormi_miniProject_Part1/main/test_result01.json', true);
-            $sampleJson.send();
-    
-            $sampleJson.onload = function(){
-                if ($sampleJson.status === 200){
-                    console.log($sampleJson.status)
-                    sampleData = JSON.parse($sampleJson.responseText);
-                    console.log(sampleData);
-                }
-            }
+        const sampleTest = async () => {
+            const sampleResult = await fetch(sampleUrl)
+            .then((res) => {
+                console.log("응답확인")
+                sampleData = res.json()
+                console.log(sampleData)
+            })
+        }
 
-        })
+        $requestTest.addEventListener("click", (e) => sampleTest())
 
     // 임시 GPT 연동
         const $form = document.querySelector("#questionArea");
@@ -384,7 +364,7 @@
 
         // api 요청보내는 함수
         const apiPost = async () => {
-        const result = await fetch(url, {
+        const resultAPI = await fetch(url, {
             method: "POST",
             headers: {
             "Content-Type": "application/json",
