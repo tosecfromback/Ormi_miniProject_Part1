@@ -33,7 +33,8 @@
         #main_page > #page_search{
             display: grid;
             grid-template-rows: repeat(4, 1fr);
-            grid-template-columns: 100px 250px;
+            grid-template-columns: 100px 250px 150px;
+            width: 500px;
         }
         #main_page > input{
             border: solid black 1px;
@@ -79,6 +80,9 @@
         <header id="page_top" class="h-300 bg-white m-5 mb-3 rounded">
             <!-- CSS시 logo 삽입 -->
             <p>상단영역</p>
+            <article id="tempTestResult">
+                <p>각 테스트 임시 결과출력용(테스트 버튼 통합 후 제거예정)</p>
+            </article>
         </header>
         <nav id="page_menu" class="h-300 bg-white m-5 mb-3 rounded">
             <!-- 메인시작화면 -->
@@ -95,18 +99,18 @@
                 <!-- 기본검색 -->
                 <p>키워드</p>
                 <input type="text" id="keyword_text" placeholder="키워드" value="코딩 인터뷰">
+                <button type="button" id="kwd_to_text">1.제출테스트</button> 
                 <!-- 상세검색 버튼시 하단 추가 생성 -->
                 <p>서명</p>
                 <input type="text" id="title_text" placeholder="서명" value="코딩 인터뷰 완전 분석">
+                <button type="button" id="url_test">2.url테스트</button> 
                 <p>저자</p>
                 <input type="text" id="author_text" placeholder="저자" value="게일 라크만">
+                <button type="button" id="request_test">3.요청테스트</button> 
                 <p>출판사</p>
                 <input type="text" id="publisher_text" placeholder="출판사" value="인사이트">
+                <button type="button" id="result_test">4.결과출력테스트</button>
                 <!-- 검색어 텍스트 받음 -->
-                <button type="button" id="kwd_to_text">제출테스트</button> 
-                <button type="button" id="url_test">url테스트</button> 
-                <button type="button" id="request_test">요청테스트</button> 
-                <button type="button" id="result_test">결과출력테스트</button>
             </section>
             <section id="page_result">
                 <p>결과출력 시 해당 멘트가 지워지고 해당 section에 article로 결과 출력</p>
@@ -140,15 +144,49 @@
         </div>
     
     <script>
-        const $body = document.querySelector("#main_page");
-        const $kwd_text = document.querySelector("#keyword_text");
-        const $ttl_text = document.querySelector("#title_text");
-        const $ath_text = document.querySelector("#author_text");
-        const $pbl_text = document.querySelector("#publisher_text");
-        const $ready_to_text = document.querySelector("#kwd_to_text");
+        // 임시결과 출력용
+        const $ttr = document.querySelector("#tempTestResult");
+        const tempUltag = document.createElement("ul");
+
+        // 제출테스트용
+        $ttr.appendChild(tempUltag);
+        let temp_array = {};
+        function temp_result_list(item){
+            tempUltag.textContent = "제출테스트의 결과는 다음과 같습니다."
+            temp_array = Object.entries(item);
+            for (const item of temp_array) {
+                const tempLi = document.createElement("li");
+                tempLi.textContent = item;
+                tempUltag.appendChild(tempLi);
+            }
+        }
+
+        // url 테스트용
+        function temp_test_url_ready(){
+            tempUltag.textContent = "준비된 url은 다음과 같습니다."
+            const temp_test_url = document.createElement("a")
+            temp_test_url.setAttribute("href", requestData)
+            temp_test_url.textContent = requestData
+            tempUltag.appendChild(temp_test_url)
+        }
+
+        // 요청 테스트용
+        function temp_test_complete(){
+            tempUltag.textContent = "요청테스트 완료"
+        }
+
+        // 기존 코드는 여기부터
+        let $body = document.querySelector("#main_page");
+        let $kwd_text = document.querySelector("#keyword_text");
+        let $ttl_text = document.querySelector("#title_text");
+        let $ath_text = document.querySelector("#author_text");
+        let $pbl_text = document.querySelector("#publisher_text");
+        let $ready_to_text = document.querySelector("#kwd_to_text");
+        let $url_maker = document.querySelector("#url_test");
+        let $requestTest = document.querySelector("#request_test");
+        let $resultTest = document.querySelector("#result_test");
 
         // 검색페이지 출력 및 검색페이지 복귀
-        
         const $set_main = document.querySelector("#search_page");
         
         function searchBuild(){
@@ -193,7 +231,7 @@
             pbl_input.textContent = "코딩 인터뷰";
     
             test_submit.setAttribute("type", "button");
-            test_submit.setAttribute("id", "kwd_to_test");
+            test_submit.setAttribute("id", "kwd_to_text");
             test_submit.textContent = "제출테스트";
             test_url.setAttribute("type", "button");
             test_url.setAttribute("id", "url_test");
@@ -207,15 +245,15 @@
             
             $srch_section.appendChild(kwd_tag);
             $srch_section.appendChild(kwd_input);
+            $srch_section.appendChild(test_submit);
             $srch_section.appendChild(ttl_tag);
             $srch_section.appendChild(ttl_input);
+            $srch_section.appendChild(test_url);
             $srch_section.appendChild(ath_tag);
             $srch_section.appendChild(ath_input);
+            $srch_section.appendChild(test_request);
             $srch_section.appendChild(pbl_tag);
             $srch_section.appendChild(pbl_input);
-            $srch_section.appendChild(test_submit);
-            $srch_section.appendChild(test_url);
-            $srch_section.appendChild(test_request);
             $srch_section.appendChild(test_result);
             
             $rslt_section.setAttribute("id", "page_result");
@@ -285,49 +323,40 @@
             text_ready.title = $ttl_text.value.replace(/ /g,'');
             text_ready.author = $ath_text.value.replace(/ /g,'');
             text_ready.publisher = $pbl_text.value.replace(/ /g,'');
-            console.log(text_ready);
+            temp_result_list(text_ready);
         })
-        
         // 도서검색 url 준비
-        const $url_maker = document.querySelector("#url_test");
+        
         let requestData = "";
 
         $url_maker.addEventListener("click", (e) => {
             requestData = "https://www.nl.go.kr/NL/search/openApi/search.do?key=f22eb1b2769cf9c57c567707017a7ae2d49711d6a0d5dabe5d1e2bbdff8bce9e&kwd=";
 
-            requestData = requestData.concat(encodeURI(text_ready.kwd))
-            requestData = requestData.concat("&pageNum=1&pageSize=50&detailSearch=true&f1=title&v1=")
-            requestData = requestData.concat(encodeURI(text_ready.title))
-            requestData = requestData.concat("&f2=author&v2=")
-            requestData = requestData.concat(encodeURI(text_ready.author))
-            requestData = requestData.concat("&f3=publisher&v3=")
-            requestData = requestData.concat(encodeURI(text_ready.publisher))
-            requestData = requestData.concat("&apiType=json")
-            console.log(requestData)
+            requestData = requestData.concat(encodeURI(text_ready.kwd));
+            requestData = requestData.concat("&pageNum=1&pageSize=50&detailSearch=true&f1=title&v1=");
+            requestData = requestData.concat(encodeURI(text_ready.title));
+            requestData = requestData.concat("&f2=author&v2=");
+            requestData = requestData.concat(encodeURI(text_ready.author));
+            requestData = requestData.concat("&f3=publisher&v3=");
+            requestData = requestData.concat(encodeURI(text_ready.publisher));
+            requestData = requestData.concat("&apiType=json");
+            temp_test_url_ready();
         })
         
 
         // 도서검색 결과 창 출력
         // const sampleUrl = "https://www.nl.go.kr/NL/search/openApi/search.do?key=f22eb1b2769cf9c57c567707017a7ae2d49711d6a0d5dabe5d1e2bbdff8bce9e&kwd=%EC%BD%94%EB%94%A9%EC%9D%B8%ED%84%B0%EB%B7%B0&pageNum=1&pageSize=50&detailSearch=true&f1=title&v1=%EC%BD%94%EB%94%A9%EC%9D%B8%ED%84%B0%EB%B7%B0%EC%99%84%EC%A0%84%EB%B6%84%EC%84%9D&f2=author&v2=%EA%B2%8C%EC%9D%BC%EB%9D%BC%ED%81%AC%EB%A7%8C&f3=publisher&v3=%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8&apiType=json"
         let sampleResult = {};
-        const $requestTest = document.querySelector("#request_test");
 
         const sampleTest = async () => {
-            const res = await fetch(requestData)
-            console.log(Object.prototype.toString.call(res))
-            console.log(res)
-
-            sampleResult = await res.json()
-            console.log(Object.prototype.toString.call(sampleResult))
-            console.log(sampleResult)
-            Array()
+            const res = await fetch(requestData);
+            sampleResult = await res.json().then(temp_test_complete());
         }
 
         $requestTest.addEventListener("click", (e) => sampleTest())
 
         // 결과 출력
         const $result_page = document.querySelector("#page_result");
-        const $resultTest = document.querySelector("#result_test");
 
         $resultTest.addEventListener("click", (e) => {
             $result_page.innerHTML = "";
@@ -337,6 +366,8 @@
             result_ment.textContent = "요청하신 검색의 정보는 "
             result_ment.textContent = result_ment.textContent.concat(sampleResult.kwd)
             result_ment.textContent = result_ment.textContent.concat(" 입니다.")
+
+            $result_page.appendChild(result_ment);
 
             for (const item of sampleResult.result) {
                 const test_article = document.createElement("article");
