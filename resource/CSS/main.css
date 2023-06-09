@@ -1,0 +1,66 @@
+#page_theme{
+    display: grid;
+}
+#GPTTest{
+    display: grid;
+    overflow: auto;
+}
+#questioninput {
+    overflow: auto;
+    width: 300px;
+    height: 100px;
+    border: solid red 1px;
+}
+#questionBtn {
+    width: 100px;
+    height: 100px;
+    border: solid red 1px;
+}
+#page_menu {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 50px;
+}
+#main_page > #page_search{
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: 100px 250px 150px;
+    width: 500px;
+}
+#main_page > input{
+    border: solid black 1px;
+}
+#main_page > button{
+    border: solid black 1px;
+}
+p {
+    display: flex;
+    align-items: center;
+    border: solid black 1px;
+}
+/* span {
+    display: grid;
+    align-items: center;
+    border: solid black 1px;
+} */
+#page_bottom {
+    display: grid;
+    grid-template-columns: 400px 100px;
+    grid-template-rows: 150px;
+}
+#refer_logo{
+    overflow: hidden;
+    width: 360px;
+    height: 72px;
+    background: url('./resource/Img/nl_logo.png') no-repeat;
+    background-size: 100% 100%;
+}#git_logo{
+    overflow: hidden;
+    width: 72px;
+    height: 72px;
+    background: url('./resource/Img/git_logo.png') no-repeat;
+    background-size: 100% 100%;
+}
+button{
+    border: solid black 1px;
+}
