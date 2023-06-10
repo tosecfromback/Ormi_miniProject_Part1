@@ -1,4 +1,3 @@
-// import header_maker() from header_page.js
 // import nav_page.js
 
 const $div = document.querySelector("#theme_page");
@@ -31,3 +30,6 @@ $div.appendChild($header);
 $div.appendChild($nav);
 $div.appendChild($main);
 $div.appendChild($footer);
+
+// import header_maker from './header_page.js';
+// header_maker;
