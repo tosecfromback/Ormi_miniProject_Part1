@@ -1,4 +1,4 @@
-export default function header_maker() {
+export function header_maker() {
     const $p_tag = document.createElement("p");
     const $article = document.createElement("article");
 
@@ -7,7 +7,7 @@ export default function header_maker() {
     $p_tag.textContent = "테스트 결과 임시 출력 공간으로 활용";
 
     const $header_temp = document.querySelector("#header_page");
-    $header_temp.textContent("helloWrold");
+    $header_temp.textContent = "helloWrold";
     $header_temp.appendChild($article);
     $article.appendChild($p_tag);
 
