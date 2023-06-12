@@ -4,7 +4,7 @@ export function nav_maker() {
     const $btn_go_main = document.createElement("button");
     const $btn_go_lib_list = document.createElement("button");
 
-    $btn_go_main.setAttribute("id", "chng_main");
+    $btn_go_main.setAttribute("id", "back_main");
     $btn_go_main.textContent = "도서검색";
 
     $btn_go_lib_list.setAttribute("id", "lib_list");

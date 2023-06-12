@@ -1,4 +1,4 @@
-export function main_srch(){
+export function main_srch_and_rlst(){
     const $main = document.querySelector("#main_page");
 
     const $srch_section = document.createElement("section");
@@ -30,29 +30,29 @@ export function main_srch(){
     
         kwd_input.setAttribute("id", "keyword_text");
         kwd_input.setAttribute("placeholder", "키워드");
-        kwd_input.textContent = "코딩 인터뷰";
+        kwd_input.setAttribute("value", "코딩 인터뷰");
         ttl_input.setAttribute("id", "title_text");
         ttl_input.setAttribute("placeholder", "서명");
-        ttl_input.textContent = "코딩 인터뷰";
+        ttl_input.setAttribute("value", "완전 분석");
         ath_input.setAttribute("id", "author_text");
         ath_input.setAttribute("placeholder", "저자");
-        ath_input.textContent = "코딩 인터뷰";
+        ath_input.setAttribute("value", "게일 라크만");
         pbl_input.setAttribute("id", "publisher_text");
         pbl_input.setAttribute("placeholder", "출판사");
-        pbl_input.textContent = "코딩 인터뷰";
+        pbl_input.setAttribute("value", "인사이트");
     
         test_submit.setAttribute("type", "button");
         test_submit.setAttribute("id", "kwd_to_text");
-        test_submit.textContent = "제출테스트";
+        test_submit.textContent = "1.제출테스트";
         test_url.setAttribute("type", "button");
         test_url.setAttribute("id", "url_test");
-        test_url.textContent = "url테스트";
+        test_url.textContent = "2.url테스트";
         test_request.setAttribute("type", "button");
         test_request.setAttribute("id", "request_test");
-        test_request.textContent = "요청테스트";
+        test_request.textContent = "3.요청테스트";
         test_result.setAttribute("type", "button");
         test_result.setAttribute("id", "result_test");
-        test_result.textContent = "결과출력테스트";
+        test_result.textContent = "4.결과출력테스트";
         
         $srch_section.appendChild(kwd_tag);
         $srch_section.appendChild(kwd_input);

@@ -1,4 +1,4 @@
-#page_theme{
+#theme_page{
     display: grid;
 }
 #GPTTest{
@@ -43,7 +43,7 @@ p {
     align-items: center;
     border: solid black 1px;
 } */
-#page_bottom {
+#footer_page {
     display: grid;
     grid-template-columns: 400px 100px;
     grid-template-rows: 150px;
@@ -52,13 +52,13 @@ p {
     overflow: hidden;
     width: 360px;
     height: 72px;
-    background: url('./resource/Img/nl_logo.png') no-repeat;
+    background: url('../Img/nl_logo.png') no-repeat;
     background-size: 100% 100%;
 }#git_logo{
     overflow: hidden;
     width: 72px;
     height: 72px;
-    background: url('./resource/Img/git_logo.png') no-repeat;
+    background: url('../Img/git_logo.png') no-repeat;
     background-size: 100% 100%;
 }
 button{
