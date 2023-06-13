@@ -2,7 +2,7 @@ export function chng_lib_list(main_page){
     // 전국도서관 리스트 페이지 변경
         let lib_json = new XMLHttpRequest();
         let lib_list_data = {};
-        lib_json.open('GET', 'https://raw.githubusercontent.com/tosecfromback/Ormi_miniProject_Part1/main/resource/Json/lib_link.json', true);
+        lib_json.open('GET', 'https://raw.githubusercontent.com/tosecfromback/Ormi_miniProject_Part1/main/src/Json/lib_link.json', true);
         lib_json.send();
         
         lib_json.onload = function(){
