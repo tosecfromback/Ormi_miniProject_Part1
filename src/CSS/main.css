@@ -5,6 +5,14 @@
     display: grid;
     overflow: auto;
 }
+#header_page{
+    /* display: grid; */
+    width: 700px;
+}
+#nav_page{
+    /* display: grid; */
+    width: 700px;
+}
 #questioninput {
     overflow: auto;
     width: 300px;
@@ -25,7 +33,12 @@
     display: grid;
     grid-template-rows: repeat(4, 1fr);
     grid-template-columns: 100px 250px 150px;
-    width: 500px;
+    width: 650px;
+}#main_page > #page_result{
+    display: grid;
+    /* grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: 100px 250px 150px; */
+    width: 650px;
 }
 #main_page > input{
     border: solid black 1px;
@@ -63,4 +76,8 @@ p {
 }
 button{
     border: solid black 1px;
+}
+#tempTestResult{
+    width: 700px;
+    overflow: auto;
 }

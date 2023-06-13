@@ -13,4 +13,5 @@ export function nav_maker() {
 
     $nav_page.appendChild($btn_go_main);
     $nav_page.appendChild($btn_go_lib_list);
+
 }
