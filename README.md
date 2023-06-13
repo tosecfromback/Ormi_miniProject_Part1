@@ -34,3 +34,38 @@
   - 23.06.06 외부 JS활용이 아직 와닿지 않음
   - 23.06.07 url생성 및 통신 테스트
   - 23.06.08 기능적 구현 70% 완성
+  - 23.06.13 JS로 모듈화 구성 기반 완성
+
+## Repo Tree
+|   index.html
+|   README.md
+|   tree.md
+|   tree.txt
+|   
+\---src
+    +---CSS
+    |       main.css
+    |       
+    +---Img
+    |       git_img.png
+    |       git_logo.png
+    |       nl_logo.png
+    |       revise_logo_main.png
+    |       
+    +---JS
+    |   |   main.js
+    |   |   
+    |   \---PageComponent
+    |       |   footer_page.js
+    |       |   header_page.js
+    |       |   main_page.js
+    |       |   nav_page.js
+    |       |   
+    |       \---Function
+    |               chng_to_lib_list.js
+    |               main_function.js
+    |               nav_function.js
+    |               temp_test.js
+    |               
+    \---Json
+            lib_link.json
