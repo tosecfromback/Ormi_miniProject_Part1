@@ -39,9 +39,6 @@
 ## Repo Tree
 |   index.html
 |   README.md
-|   tree.md
-|   tree.txt
-|   
 \---src
     +---CSS
     |       main.css
