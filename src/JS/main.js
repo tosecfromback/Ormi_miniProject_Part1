@@ -1,7 +1,7 @@
-import { header_maker } from "./PageComponent/header_page.js";
-import { nav_maker } from "./PageComponent/nav_page.js";
-import { footer_maker } from "./PageComponent/footer_page.js";
-import { main_srch_and_rlst } from "./PageComponent/main_page.js";
+import { header_maker } from "./PageComponent/headerArea.js";
+import { nav_maker } from "./PageComponent/navArea.js";
+import { footer_maker } from "./PageComponent/footerArea.js";
+import { main_srch_and_rlst } from "./PageComponent/mainArea.js";
 import { page_chng } from "./PageComponent/Function/nav_function.js";
 
 
