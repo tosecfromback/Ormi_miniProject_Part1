@@ -1,8 +1,8 @@
 import { chng_lib_list } from "./chng_to_lib_list.js";
-import { main_srch_and_rlst } from "../main_page.js";
+import { main_srch_and_rlst } from "../mainArea.js";
 
 export function page_chng() {
-    const $body = document.querySelector("#main_page");
+    const $body = document.querySelector("#main_Area");
     const $chng_page = document.querySelector("#lib_list");
     $chng_page.addEventListener( "click", (e) => chng_lib_list($body));
 

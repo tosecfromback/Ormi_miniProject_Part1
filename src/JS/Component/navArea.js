@@ -1,5 +1,5 @@
 export function nav_maker() {
-    const $nav_page = document.querySelector("#nav_page");
+    const $nav_page = document.querySelector("#nav_Area");
     
     const $btn_go_main = document.createElement("button");
     const $btn_go_lib_list = document.createElement("button");

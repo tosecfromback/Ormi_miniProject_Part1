@@ -20,7 +20,7 @@ export function main_srch_and_rlst(main){
     const test_request = document.createElement("button");
     const test_result = document.createElement("button");
 
-    $srch_section.setAttribute("id", "page_search");
+    $srch_section.setAttribute("id", "search_section");
     $srch_section.setAttribute("class", "grid h-1000 bg-white m-5 mb-3 rounded");
 
     kwd_tag.textContent = "키워드";
@@ -67,7 +67,7 @@ export function main_srch_and_rlst(main){
     $srch_section.appendChild(pbl_input);
     $srch_section.appendChild(test_result);
     
-    $rslt_section.setAttribute("id", "page_result");
+    $rslt_section.setAttribute("id", "result_section");
     
     temp_comment.textContent = "결과출력 시 해당 멘트가 지워지고 해당 section에 article로 결과 출력";
     

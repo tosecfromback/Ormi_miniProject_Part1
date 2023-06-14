@@ -1,17 +1,19 @@
-#theme_page{
+#theme_Area{
     display: grid;
+    /* grid-template-columns: 150px 500px; */
 }
 #GPTTest{
     display: grid;
     overflow: auto;
 }
-#header_page{
-    /* display: grid; */
-    width: 700px;
+#header_Area{
+    width: 650px;
 }
-#nav_page{
-    /* display: grid; */
-    width: 700px;
+#nav_Area{
+    width: 650px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 50px;
 }
 #questioninput {
     overflow: auto;
@@ -24,38 +26,54 @@
     height: 100px;
     border: solid red 1px;
 }
-#page_menu {
+#main_Area{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 50px;
+    grid-template-rows: 200px;
+    width: 650px;
 }
-#main_page > #page_search{
+#main_Area > #search_section{
     display: grid;
     grid-template-rows: repeat(4, 1fr);
     grid-template-columns: 100px 250px 150px;
-    width: 650px;
-}#main_page > #page_result{
+}#main_Area > #result_section{
+    /* display: grid; */
+    margin: 20px;
+    /* grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: 100px 250px 150px; */
+}
+#main_Area > #result_section > article{
     display: grid;
+    margin-top: 10px;
     /* grid-template-rows: repeat(4, 1fr);
     grid-template-columns: 100px 250px 150px; */
     width: 650px;
 }
-#main_page > input{
+.searching_txt{
+    /* background-color: rgba(153, 205, 50, 0.384); */
+    text-decoration: underline blueviolet;
+}
+#main_Area > input{
     border: solid black 1px;
 }
-#main_page > button{
+#main_Area > button{
     border: solid black 1px;
 }
-p {
+#search_section > p {
     display: flex;
     align-items: center;
-    border: solid black 1px;
+    justify-content: center;
+    /* border: solid black 1px; */
+    background: rgb(214, 243, 201) ;
+    margin: 5px;
+    border-radius: 4px;
 }
-/* span {
-    display: grid;
-    align-items: center;
+/* #result_section > article {
+    display: block;
     border: solid black 1px;
 } */
+#kwd {
+    font-weight: bold;
+}
 #footer_page {
     display: grid;
     grid-template-columns: 400px 100px;
@@ -67,17 +85,72 @@ p {
     height: 72px;
     background: url('../Img/nl_logo.png') no-repeat;
     background-size: 100% 100%;
+    border-radius: 5px;
+    border: solid black 1px;
 }#git_logo{
     overflow: hidden;
     width: 72px;
     height: 72px;
     background: url('../Img/git_logo.png') no-repeat;
     background-size: 100% 100%;
+    border-radius: 10px;
+    border: solid black 1px;
 }
 button{
+    margin: 2px;
+    border-radius: 5px;
     border: solid black 1px;
 }
 #tempTestResult{
     width: 700px;
     overflow: auto;
+}
+#refer_link{
+    display: block;
+    float: left;
+    width: 400px;
+}
+#Git_link{
+    display: block;
+    float: left;
+    width: 150px;
+}
+/* h2태그의 클래스를 sr-only로 잡고 해당 태그를 보이지 않게 하는 코드 */
+.sr-only {
+    position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    border: 0;
+    clip: rect(0,0,0,0);
+} 
+
+#rslt_ment{
+    display: grid;
+    border: solid black 1px;
+}
+table{
+    background-color: antiquewhite;
+}
+
+table > tr > td{
+    border: solid black 1px;
+}
+
+#td_tag{
+    text-align: center;
+}
+#search_section > input{
+    border-radius: 3px;
+    border: solid rgba(128, 128, 128, 0.788) 2px;
+    margin: 5px;
+    /* margin-top: 2px;
+    margin-bottom: 2px; */
+}
+
+#srch_kwd{
+    display: grid;
+    grid-template-columns: 3;
 }
