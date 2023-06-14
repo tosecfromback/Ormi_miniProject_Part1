@@ -40,6 +40,8 @@
 ```bash
 |   index.html
 |   README.md
+|   tree.txt
+|   
 \---src
     +---CSS
     |       main.css
@@ -51,13 +53,14 @@
     |       revise_logo_main.png
     |       
     +---JS
+    |   |   chatGPT.js
     |   |   main.js
     |   |   
     |   \---PageComponent
-    |       |   footer_page.js
-    |       |   header_page.js
-    |       |   main_page.js
-    |       |   nav_page.js
+    |       |   footerArea.js
+    |       |   headerArea.js
+    |       |   mainArea.js
+    |       |   navArea.js
     |       |   
     |       \---Function
     |               chng_to_lib_list.js
