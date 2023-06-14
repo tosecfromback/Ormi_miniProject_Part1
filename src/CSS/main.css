@@ -28,7 +28,7 @@
 }
 #main_Area{
     display: grid;
-    grid-template-rows: 200px;
+    /* grid-template-rows: 200px; */
     width: 650px;
 }
 #main_Area > #search_section{
@@ -48,6 +48,9 @@
     grid-template-columns: 100px 250px 150px; */
     width: 650px;
 }
+/* #lib_listset{
+    display: grid;
+} */
 .searching_txt{
     /* background-color: rgba(153, 205, 50, 0.384); */
     text-decoration: underline blueviolet;
@@ -115,8 +118,18 @@ button{
     float: left;
     width: 150px;
 }
-/* h2태그의 클래스를 sr-only로 잡고 해당 태그를 보이지 않게 하는 코드 */
-.sr-only {
+/*해당 태그를 보이지 않게 하는 코드 */
+#footer_tap {
+    position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    border: 0;
+    clip: rect(0,0,0,0);
+} 
+#local_name {
     position: absolute;
     overflow: hidden;
     width: 1px;

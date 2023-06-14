@@ -1,5 +1,5 @@
 import * as tt from "./temp_test.js"
-export default function Srch_and_Rslt() {
+export function Srch_and_Rslt() {
     let $kwd_text = document.querySelector("#keyword_text");
     let $ttl_text = document.querySelector("#title_text");
     let $ath_text = document.querySelector("#author_text");
@@ -9,7 +9,6 @@ export default function Srch_and_Rslt() {
     let $url_maker = document.querySelector("#url_test");
     let $requestBtn = document.querySelector("#request_test");
     let $resultBtn = document.querySelector("#result_test");
-
 
     // 도서검색 값 준비
     let text_ready = {

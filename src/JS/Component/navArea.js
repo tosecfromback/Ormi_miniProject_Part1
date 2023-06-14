@@ -1,5 +1,8 @@
-export function nav_maker() {
-    const $nav_page = document.querySelector("#nav_Area");
+export function nav() {
+    const $nav = document.createElement("nav");
+    $nav.setAttribute("id", "nav_Area");
+    $nav.setAttribute("class", "h-300 bg-white m-5 mb-3 rounded");
+
     
     const $btn_go_main = document.createElement("button");
     const $btn_go_lib_list = document.createElement("button");
@@ -11,7 +14,10 @@ export function nav_maker() {
     $btn_go_lib_list.textContent = "전국의 도서관";
 
 
-    $nav_page.appendChild($btn_go_main);
-    $nav_page.appendChild($btn_go_lib_list);
+    $nav.appendChild($btn_go_main);
+    $nav.appendChild($btn_go_lib_list);
+    
+
+    return $nav
 
 }
