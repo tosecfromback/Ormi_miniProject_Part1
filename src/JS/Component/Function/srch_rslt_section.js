@@ -21,9 +21,11 @@ export function Srch_rslt(){
     const test_url = document.createElement("button");
     const test_request = document.createElement("button");
     const test_result = document.createElement("button");
+
+    const submit_btn = document.createElement("button");
     
     $srch_section.setAttribute("id", "search_section");
-    $srch_section.setAttribute("class", "grid h-1000 bg-white m-5 mb-3 rounded");
+    $srch_section.setAttribute("class", "grid bg-white rounded");
     
     kwd_tag.textContent = "키워드";
     ttl_tag.textContent = "서명";
@@ -45,16 +47,20 @@ export function Srch_rslt(){
     
     test_submit.setAttribute("type", "button");
     test_submit.setAttribute("id", "kwd_to_text");
-    test_submit.textContent = "1.제출테스트";
+    test_submit.textContent = "1.제출테스트(통합에서 가능)";
     test_url.setAttribute("type", "button");
     test_url.setAttribute("id", "url_test");
-    test_url.textContent = "2.url테스트";
+    test_url.textContent = "2.url테스트(통합에서 가능)";
     test_request.setAttribute("type", "button");
     test_request.setAttribute("id", "request_test");
-    test_request.textContent = "3.요청테스트";
+    test_request.textContent = "3.요청테스트(통합에서 구현중)";
     test_result.setAttribute("type", "button");
     test_result.setAttribute("id", "result_test");
     test_result.textContent = "4.결과출력테스트";
+
+    submit_btn.setAttribute("type", "button");
+    submit_btn.setAttribute("id", "get_result");
+    submit_btn.textContent = "제출버튼 통합 테스트 중"
     
     $srch_section.appendChild(kwd_tag);
     $srch_section.appendChild(kwd_input);
@@ -68,6 +74,8 @@ export function Srch_rslt(){
     $srch_section.appendChild(pbl_tag);
     $srch_section.appendChild(pbl_input);
     $srch_section.appendChild(test_result);
+
+    $srch_section.appendChild(submit_btn);
     
     $rslt_section.setAttribute("id", "result_section");
     

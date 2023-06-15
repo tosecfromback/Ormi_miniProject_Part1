@@ -1,7 +1,7 @@
 export function footer(){
     const $footer = document.createElement("footer");
     $footer.setAttribute("id", "footer_Area");
-    $footer.setAttribute("class", "h-300 m-5 mb-3 rounded");
+    $footer.setAttribute("class", "rounded");
 
     const refer = document.createElement("h2");
     const refer_a = document.createElement("a");

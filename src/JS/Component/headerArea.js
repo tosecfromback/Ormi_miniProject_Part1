@@ -1,7 +1,7 @@
 export function header() {
     const $header = document.createElement("header");
     $header.setAttribute("id", "header_Area");
-    $header.setAttribute("class", "h-300 bg-white m-5 mb-3 rounded");
+    $header.setAttribute("class", "bg-white rounded");
     
     $header.textContent = "CSS 작업 후 로고로 변경, 우측에 nav를 넣을 예정";
     

@@ -1,16 +1,17 @@
 #theme_Area{
     display: grid;
-    /* grid-template-columns: 150px 500px; */
+    /* grid-template-columns: 150px 550px; */
+    grid-template-rows: 150px ;
 }
 #GPTTest{
     display: grid;
     overflow: auto;
 }
 #header_Area{
-    width: 650px;
+    /* width: 650px; */
 }
 #nav_Area{
-    width: 650px;
+    /* width: 650px; */
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 50px;
@@ -80,7 +81,7 @@
 #footer_page {
     display: grid;
     grid-template-columns: 400px 100px;
-    grid-template-rows: 150px;
+    grid-template-rows: 100px;
 }
 #refer_logo{
     overflow: hidden;

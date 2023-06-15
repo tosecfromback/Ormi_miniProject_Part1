@@ -1,68 +1,50 @@
 import * as tt from "./temp_test.js"
-import { in_to_array } from "./text_to_array.js";
 import { url_change } from "./url_change.js";
-import call_Api  from "./call_result.js"
+export function Srch_Rslt(){
 
+    const $sbm_btn = document.querySelector("#get_result");
 
-export function Srch_and_Rslt() {
+    const $result_page = document.querySelector("#result_section");
 
-    const $ready_to_text = document.querySelector("#kwd_to_text");
-    const $url_maker = document.querySelector("#url_test");
-    const $requestBtn = document.querySelector("#request_test");
-    const $resultBtn = document.querySelector("#result_test");
-
-    const $get_result = document.querySelector("#get_result");
-    
-    // 도서검색 값 준비
     let text_ready = {
         kwd : '',
         title : '',
         author : '',
         publisher : '',
     };
-
     
-    // 도서검색 url 준비
-    let requestData = "https://www.nl.go.kr/NL/search/openApi/search.do?key=f22eb1b2769cf9c57c567707017a7ae2d49711d6a0d5dabe5d1e2bbdff8bce9e&kwd=";
+    let requestData = "";
 
-    // 도서검색 결과 창 출력
     let searchResult = {};
-    
-    $get_result.addEventListener("click", (e) => {
-        in_to_array(text_ready);
-        console.log(text_ready)
+
+    const sampleTest = async () => {
+        const res = await fetch(requestData);
+        searchResult = await res.json().then(tt.temp_test_complete());
+    }
+
+    $sbm_btn.addEventListener("click", (e) => {
+        //입력 값을 url로 변환하기 위해 공백을 '+'로 변환
+        // text_ready.kwd = $kwd_in.value.replace(/ /g,'+');
+        // text_ready.title = $ttl_in.value.replace(/ /g,'+');
+        // text_ready.author = $ath_in.value.replace(/ /g,'+');
+        // text_ready.publisher = $pbl_in.value.replace(/ /g,'+');
+        url_change(text_ready);
         tt.temp_result_list(text_ready);
 
-        requestData = url_change(text_ready, requestData);
-        console.log(requestData)
+        requestData = "https://www.nl.go.kr/NL/search/openApi/search.do?key=f22eb1b2769cf9c57c567707017a7ae2d49711d6a0d5dabe5d1e2bbdff8bce9e&kwd=";
+
+        requestData = requestData.concat(encodeURI(text_ready.kwd));
+        requestData = requestData.concat("&pageNum=1&pageSize=50&detailSearch=true&f1=title&v1=");
+        requestData = requestData.concat(encodeURI(text_ready.title));
+        requestData = requestData.concat("&f2=author&v2=");
+        requestData = requestData.concat(encodeURI(text_ready.author));
+        requestData = requestData.concat("&f3=publisher&v3=");
+        requestData = requestData.concat(encodeURI(text_ready.publisher));
+        requestData = requestData.concat("&apiType=json");
         tt.temp_test_url_ready(requestData);
 
-    })
+        sampleTest()
 
-
-    $ready_to_text.addEventListener("click", (e) => {
-        in_to_array(text_ready);
-        tt.temp_result_list(text_ready);
-    })
-
-    $url_maker.addEventListener("click", (e) => {
-        requestData = url_change(text_ready, requestData);
-        tt.temp_test_url_ready(requestData);
-    })
-
-
-    $requestBtn.addEventListener("click", (e) => {
-        call_Api(searchResult,requestData);
-    });
-
-    
-
-    // 결과 출력
-    const $result_page = document.querySelector("#result_section");
-
-    $resultBtn.addEventListener("click", (e) => {
-        
-        console.log(searchResult);
         $result_page.innerHTML = "";
         let result_count = 0;
         const kwd_article = document.createElement("article");
@@ -148,7 +130,5 @@ export function Srch_and_Rslt() {
             tr_menu.appendChild(rslt_menu);
 
         }
-
     })
-
 }

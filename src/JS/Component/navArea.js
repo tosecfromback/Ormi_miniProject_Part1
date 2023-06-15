@@ -1,7 +1,7 @@
 export function nav() {
     const $nav = document.createElement("nav");
     $nav.setAttribute("id", "nav_Area");
-    $nav.setAttribute("class", "h-300 bg-white m-5 mb-3 rounded");
+    $nav.setAttribute("class", "bg-white rounded");
 
     
     const $btn_go_main = document.createElement("button");
