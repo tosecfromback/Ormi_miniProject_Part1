@@ -37,39 +37,48 @@
   - 23.06.08 기능적 구현 70% 완성
   - 23.06.13 JS로 모듈화 구성 기반 완성
   - 23.06.15 개별 작업을 통합버튼으로 만들면서 동시에 각 기능을 개별 JS파일로 구성 중 미흡점 5번에 상세기입
+  - 23.06.21 버튼통합완료 CSS 작업 및 파일트리 정리 시작
 
 ## Repo Tree
 ```bash
-|   index.html
-|   README.md
-|   tree.txt
-|   
-\---src
-    +---CSS
-    |       main.css
-    |       
-    +---Img
-    |       git_img.png
-    |       git_logo.png
-    |       nl_logo.png
-    |       revise_logo_main.png
-    |       
-    +---JS
-    |   |   chatGPT.js
-    |   |   main.js
-    |   |   
-    |   \---PageComponent
-    |       |   footerArea.js
-    |       |   headerArea.js
-    |       |   mainArea.js
-    |       |   navArea.js
-    |       |   
-    |       \---Function
-    |               chng_to_lib_list.js
-    |               main_function.js
-    |               nav_function.js
-    |               temp_test.js
-    |               
-    \---Json
+│  index.html
+│  README.md
+│  tree.txt
+│  
+└─src
+    ├─CSS
+    │      main.css
+    │      
+    ├─Img
+    │      git_img.png
+    │      git_logo.png
+    │      nl_logo.png
+    │      revise_logo_main.png
+    │      
+    ├─JS
+    │  │  chatGPT.js
+    │  │  main.js
+    │  │  
+    │  └─Component
+    │      │  const_tag.js
+    │      │  cosnt_test.html
+    │      │  footerArea.js
+    │      │  headerArea.js
+    │      │  mainArea.js
+    │      │  navArea.js
+    │      │  
+    │      └─Function
+    │              call_result.js
+    │              lib_list_section.js
+    │              main_function.js
+    │              nav_function.js
+    │              search_function.js
+    │              set_result.js
+    │              srch_rslt_section.js
+    │              temp_test.js
+    │              text_to_array.js
+    │              url_change.js
+    │              
+    └─Json
             lib_link.json
 ```
