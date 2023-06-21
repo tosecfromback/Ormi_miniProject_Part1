@@ -34,9 +34,14 @@
 }
 #main_Area > #search_section{
     display: grid;
-    grid-template-rows: repeat(4, 1fr);
-    grid-template-columns: 100px 250px 150px;
-}#main_Area > #result_section{
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 100px 250px 120px;
+}
+#get_result{
+    grid-row: span 4;
+
+}
+#main_Area > #result_section{
     /* display: grid; */
     margin: 20px;
     /* grid-template-rows: repeat(4, 1fr);

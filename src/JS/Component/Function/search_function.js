@@ -20,6 +20,7 @@ export function Srch_Rslt(){
     const sampleTest = async () => {
         const res = await fetch(requestData);
         searchResult = await res.json().then(tt.temp_test_complete());
+        return searchResult;
     }
 
     $sbm_btn.addEventListener("click", (e) => {
